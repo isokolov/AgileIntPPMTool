@@ -5,12 +5,23 @@ import io.agileintelligence.ppmtool.exceptions.ProjectIdException;
 import io.agileintelligence.ppmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 public class ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    public Project findProjectByProjectIdentifier(String projectId) {
+        Project project = projectRepository.findByProjectIdentifier(projectId);
+
+        if (project == null) {
+            throw new ProjectIdException("Project ID '" + projectId + "' does not exist");
+        }
+
+        return project;
+    }
 
     public Project saveOrUpdateProject(Project project) {
 
@@ -22,4 +33,9 @@ public class ProjectService {
             throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exists");
         }
     }
+
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
+    }
+
 }
