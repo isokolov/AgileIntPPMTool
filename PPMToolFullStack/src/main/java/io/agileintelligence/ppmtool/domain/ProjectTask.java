@@ -1,5 +1,6 @@
 package io.agileintelligence.ppmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class ProjectTask {
     private String summary;
     private String acceptanceCriteria;
     private String status;
-    private Integer prioroty;
+    private Integer priority;
     private Date dueDate;
 
     //ManytoOne with Backlog
@@ -30,7 +31,9 @@ public class ProjectTask {
 
     @Column(updatable = false)
     private String projectIdentifier;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date create_At;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date update_At;
 
     public Long getId() {
@@ -73,12 +76,12 @@ public class ProjectTask {
         this.status = status;
     }
 
-    public Integer getPrioroty() {
-        return prioroty;
+    public Integer getPriority() {
+        return priority;
     }
 
-    public void setPrioroty(Integer prioroty) {
-        this.prioroty = prioroty;
+    public void setPriority(Integer prioroty) {
+        this.priority = prioroty;
     }
 
     public Date getDueDate() {
@@ -139,7 +142,7 @@ public class ProjectTask {
                 ", summary='" + summary + '\'' +
                 ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
                 ", status='" + status + '\'' +
-                ", prioroty=" + prioroty +
+                ", prioroty=" + priority +
                 ", dueDate=" + dueDate +
                 ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", create_At=" + create_At +
