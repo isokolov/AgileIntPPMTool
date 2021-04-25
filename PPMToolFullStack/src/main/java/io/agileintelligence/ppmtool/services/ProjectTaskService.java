@@ -2,6 +2,7 @@ package io.agileintelligence.ppmtool.services;
 
 import io.agileintelligence.ppmtool.domain.Backlog;
 import io.agileintelligence.ppmtool.domain.ProjectTask;
+import io.agileintelligence.ppmtool.exceptions.ProjectIdException;
 import io.agileintelligence.ppmtool.repositories.BacklogRepository;
 import io.agileintelligence.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,13 @@ public class ProjectTaskService {
         Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier);
         //set the bl to pt
         projectTask.setBacklog(backlog);
+
         //we want our project sequence to be like this: IDPRO-1  IDPRO-2  ...100 101
         Integer BacklogSequence = backlog.getPTSequence();
         // Update the BL SEQUENCE
         BacklogSequence++;
+        // no updates without it
+        backlog.setPTSequence(BacklogSequence);
 
         //Add Sequence to Project Task
         projectTask.setProjectSequence(projectIdentifier + "-" + BacklogSequence);
