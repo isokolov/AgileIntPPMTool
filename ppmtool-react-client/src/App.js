@@ -8,23 +8,17 @@ import AddProject from './components/Project/AddProject';
 import { Component } from 'react';
 import { Provider } from "react-redux";
 import store from "./store";
+import TodoItem from './TodoApp/components/TodoItem';
 
 class App extends Component {
   render() {
     return (
       <div>
-            <input type="checkbox" />
-            <p>Placeholder text here</p>
-            
-            <input type="checkbox" />
-            <p>Placeholder text here</p>
-            
-            <input type="checkbox" />
-            <p>Placeholder text here</p>
-            
-            <input type="checkbox" />
-            <p>Placeholder text here</p> 
-        </div>
+            <TodoItem />
+            <TodoItem />
+            <TodoItem />
+            <TodoItem />
+      </div>
     );
     {/* <Provider store={store}>
         <Router>
