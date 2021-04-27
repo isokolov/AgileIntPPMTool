@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import { getProject } from "../../actions/projectActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classnames from "classnames";
 
-export default class UpdateProject extends Component {
+class UpdateProject extends Component {
+    //set state
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getProject(id, this.props.history);
+  }
   render() {
     return (
       <div className="project">
@@ -15,6 +24,9 @@ export default class UpdateProject extends Component {
                     type="text"
                     className="form-control form-control-lg "
                     placeholder="Project Name"
+                    name="projectName"
+                    // some troubles to execute it now 
+                    // value={this.state.project.value}
                   />
                 </div>
                 <div className="form-group">
@@ -22,6 +34,7 @@ export default class UpdateProject extends Component {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Unique Project ID"
+                    name="projectIdentifier"
                     disabled
                   />
                 </div>
@@ -29,6 +42,7 @@ export default class UpdateProject extends Component {
                   <textarea
                     className="form-control form-control-lg"
                     placeholder="Project Description"
+                    name="description"
                   />
                 </div>
                 <h6>Start Date</h6>
@@ -60,3 +74,17 @@ export default class UpdateProject extends Component {
     );
   }
 }
+
+UpdateProject.propTypes = {
+  getProject: PropTypes.func.isRequired,
+  project: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  project: state.project.project
+});
+
+export default connect(
+  mapStateToProps,
+  { getProject }
+)(UpdateProject);
