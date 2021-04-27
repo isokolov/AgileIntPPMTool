@@ -12,7 +12,21 @@ import store from "./store";
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
+      <div>
+            <input type="checkbox" />
+            <p>Placeholder text here</p>
+            
+            <input type="checkbox" />
+            <p>Placeholder text here</p>
+            
+            <input type="checkbox" />
+            <p>Placeholder text here</p>
+            
+            <input type="checkbox" />
+            <p>Placeholder text here</p> 
+        </div>
+    );
+    {/* <Provider store={store}>
         <Router>
           <div className="App">
             <Header />
@@ -20,8 +34,7 @@ class App extends Component {
             <Route exact path="/addProject" component={AddProject} />
           </div>
         </Router>
-      </Provider>
-    );
+      </Provider> */}
   }
 }
 
