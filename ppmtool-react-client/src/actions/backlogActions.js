@@ -8,7 +8,7 @@ export const addProjectTask = (
 ) => async dispatch => {
 
     try {
-        await axios.post(`http://localhost:8080/api/backlog/${backlog_id}`, project_task);
+        await axios.post(`/api/backlog/${backlog_id}`, project_task);
         history.push(`/projectBoard/${backlog_id}`);
         dispatch({
           type: GET_ERRORS,
