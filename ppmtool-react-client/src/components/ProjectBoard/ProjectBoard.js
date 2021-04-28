@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Backlog from "./Backlog";
 
 class ProjectBoard extends Component {
   render() {
@@ -14,7 +15,7 @@ class ProjectBoard extends Component {
         {
           // <!-- Backlog STARTS HERE -->
         }
-        <div className="container">
+        {/*<div className="container">
           <div className="row">
             <div className="col-md-4">
               <div className="card text-center mb-2">
@@ -69,7 +70,8 @@ class ProjectBoard extends Component {
               }
             </div>
           </div>
-        </div>
+            </div>*/}
+        <Backlog />
       </div>
     );
   }
