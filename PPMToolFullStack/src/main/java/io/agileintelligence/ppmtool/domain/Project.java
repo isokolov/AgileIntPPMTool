@@ -38,6 +38,11 @@ public class Project {
     @JsonIgnore
     private Backlog backlog;
 
+    @ManyToOne(fetch = FetchType.EAGER) //REMOVE REFRESH
+    @JoinColumn(name="user_id", updatable = false, nullable = false)
+    @JsonIgnore
+    private User user;
+
     public Backlog getBacklog() {
         return backlog;
     }
@@ -112,6 +117,14 @@ public class Project {
 
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @PrePersist

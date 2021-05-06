@@ -19,6 +19,9 @@ public class ProjectService {
     private BacklogRepository backlogRepository;
 
     public Project findProjectByProjectIdentifier(String projectId) {
+
+        //Only want to return the project if the user looking for it is the owner
+
         Project project = projectRepository.findByProjectIdentifier(projectId);
 
         if (project == null) {
