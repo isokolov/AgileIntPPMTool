@@ -7,5 +7,5 @@ public class SecurityConstants {
     public static final String SECRET ="SecretKeyToGenJWTs";
     public static final String TOKEN_PREFIX= "Bearer ";
     public static final String HEADER_STRING = "Authorization";
-    public static final long EXPIRATION_TIME = 120_000_0; // 1200 seconds == 20 minutes
+    public static final long EXPIRATION_TIME = 120_000; // 120 seconds
 }

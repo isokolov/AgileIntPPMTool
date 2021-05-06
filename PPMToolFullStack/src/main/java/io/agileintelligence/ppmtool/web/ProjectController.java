@@ -1,3 +1,5 @@
+package io.agileintelligence.ppmtool.web;
+
 import io.agileintelligence.ppmtool.domain.Project;
 import io.agileintelligence.ppmtool.services.MapValidationErrorService;
 import io.agileintelligence.ppmtool.services.ProjectService;
